@@ -6,8 +6,10 @@ version = 3
 name = "anton"
 version = "0.1.0"
 dependencies = [
+ "colorous",
  "crossterm",
  "eyre",
+ "itertools",
  "ratatui",
 ]
 
@@ -40,6 +42,12 @@ name = "cfg-if"
 version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
+
+[[package]]
+name = "colorous"
+version = "1.0.12"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7eb0838c7c2f4548ff2218bfdcc6ce3d34ffabd0128bfb9eb44cf27de1ec38b3"
 
 [[package]]
 name = "crossterm"

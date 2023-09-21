@@ -131,17 +131,21 @@ where
         state: &mut InstructionViewState<I>,
     ) {
         let mut instructions = Vec::new();
+        let mut current = state.beggining_address;
         for instruction in &state.instruction_buffer {
             let Some(instruction) = instruction else {
                 instructions.push(Row::new(["--"]));
                 continue;
             };
 
+            let prefix = Line::from(if current == state.pointer { ">" } else { " " });
+            current += std::mem::size_of::<I>() as u32;
+
             let instr_text = instruction.instruction_display();
-            instructions.push(Row::new([instr_text]));
+            instructions.push(Row::new([prefix, instr_text]));
         }
 
-        let constraint = [Constraint::Length(area.width)];
+        let constraint = [Constraint::Length(1), Constraint::Length(area.width)];
         let instruction_table = Table::new(instructions).widths(&constraint);
         Widget::render(instruction_table, area, buf);
     }

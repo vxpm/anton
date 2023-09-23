@@ -102,7 +102,7 @@ impl<'a> MemoryView<'a> {
         let info_bar = main_chunks[1];
         let address_column = view_chunks[0];
 
-        let byte_count = view_chunks[2].width / 4;
+        let byte_count = (view_chunks[2].width - 1) / 4;
         let data_chunks = Layout::default()
             .direction(Direction::Horizontal)
             .constraints(

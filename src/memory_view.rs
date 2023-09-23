@@ -324,8 +324,9 @@ impl<'a> StatefulWidget for MemoryView<'a> {
         // update state
         state.bytes_per_bucket = layout.memory_table.width / 3;
         let pointed_bucket = state.pointer - state.pointer % state.bytes_per_bucket as Address;
-        state.beginning_bucket = pointed_bucket
-            .saturating_sub((state.bytes_per_bucket * layout.address_column.height / 2) as Address);
+        state.beginning_bucket = pointed_bucket.saturating_sub(
+            (state.bytes_per_bucket * ((layout.address_column.height / 2) & !1)) as Address,
+        );
 
         let value_count = state.bytes_per_bucket as usize * area.height as usize;
         state.memory_buffer.clear();

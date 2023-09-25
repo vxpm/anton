@@ -171,7 +171,7 @@ impl<'a> MemoryView<'a> {
                 let style = {
                     let style = Style::default().fg(Color::Rgb(color.r, color.g, color.b));
 
-                    let style = if ((state.beginning_bucket + i as u32) / 4) % 2 == 0 {
+                    let style = if ((state.beginning_bucket.wrapping_add(i as u32)) / 4) % 2 == 0 {
                         style.underlined()
                     } else {
                         style

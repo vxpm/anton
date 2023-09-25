@@ -205,12 +205,12 @@ impl<'a> MemoryView<'a> {
             for byte in bytes {
                 let c = byte.unwrap_or(b' ') as char;
                 let c = if !c.is_ascii() {
-                    '〜'
+                    '⸱'
                 } else if c.is_ascii_control() {
                     match c {
-                        '\0' => '∘',
+                        '\0' => '◌',
                         '\n' => '↲',
-                        _ => '☐',
+                        _ => '⬚',
                     }
                 } else {
                     c
